@@ -117,24 +117,36 @@ st.markdown(
             text-transform: uppercase;
         }
 
-        /* 6. Glassmorphism Form Elements */
-        div[data-testid="stForm"], .stTextInput>div>div>input, .stSelectbox>div>div>div, .stTextArea>div>div>textarea {
-            background: rgba(255, 255, 255, 0.04) !important;
-            backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
-            color: #ffffff !important;
+        /* 6. Glassmorphism Form Elements (FIXED FOR TEXT VISIBILITY) */
+        .stTextInput>div>div>input, .stTextArea>div>div>textarea, div[data-baseweb="select"] > div {
+            background-color: #1e1b4b !important; /* Solid dark background */
+            border: 1px solid rgba(168, 85, 247, 0.4) !important;
+            color: #ffffff !important; /* White text */
             border-radius: 12px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+        
+        /* Ensure placeholder is visible but not too bright */
+        ::placeholder {
+            color: #94a3b8 !important;
+            opacity: 0.8 !important;
         }
 
-        /* 7. Input Focus Glow */
-        .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus, .stSelectbox>div>div>div:focus {
+        /* Ensure focused input stays dark with a glow */
+        .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus, div[data-baseweb="select"] > div:focus {
+            background-color: #2e1065 !important; /* Slightly brighter dark purple on focus */
             border-color: #a855f7 !important;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3) !important;
-            background: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5) !important;
+            color: #ffffff !important;
         }
 
-        /* 8. Next-Level Buttons (CRITICAL FIX FOR VISIBILITY) */
+        /* 7. Labels */
+        .stTextInput label, .stSelectbox label, .stTextArea label {
+            color: #f8fafc !important;
+            font-weight: 600 !important;
+            font-size: 0.95rem !important;
+        }
+
+        /* 8. Next-Level Buttons */
         div[data-testid="stFormSubmitButton"] > button,
         div[data-testid="stButton"] > button,
         .stDownloadButton > button {
@@ -196,31 +208,6 @@ st.markdown(
             line-height: 1.7;
             color: #e2e8f0 !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* 12. FIX: Dropdown, Labels, and Placeholder Visibility */
-        /* Force dropdown background to be dark */
-        div[data-baseweb="select"] > div {
-            background-color: rgba(30, 27, 75, 0.9) !important;
-            border: 1px solid rgba(168, 85, 247, 0.4) !important;
-            color: #ffffff !important;
-        }
-        /* Force dropdown selected text to be white */
-        div[data-baseweb="select"] span,
-        div[data-baseweb="select"] div[role="button"] {
-            color: #ffffff !important;
-            font-weight: 500 !important;
-        }
-        /* Force the labels (e.g., 'Document Type') to be bright white */
-        .stTextInput label, .stSelectbox label, .stTextArea label {
-            color: #f8fafc !important;
-            font-weight: 600 !important;
-            font-size: 0.95rem !important;
-        }
-        /* Make placeholder text more visible */
-        ::placeholder {
-            color: #94a3b8 !important;
-            opacity: 0.9 !important;
         }
     </style>
     
